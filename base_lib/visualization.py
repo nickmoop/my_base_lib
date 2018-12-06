@@ -2,7 +2,7 @@ import numpy
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 
-from tmp_base_lib.helper import make_directory
+from base_lib.helper import make_directory
 
 PLOTS_DIRECTORY = 'plots'
 make_directory(PLOTS_DIRECTORY)
