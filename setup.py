@@ -6,6 +6,6 @@ setup(
       description='Python data transormation utilites',
       author='Nick',
       author_email='wsaad@mail.ru',
-      url='http://www.python.org/sigs/distutils-sig/',
-      packages=['my_base_lib'],
+      url='https://github.com/nickmoop/my_base_lib/',
+      packages=['base_lib'],
 )
