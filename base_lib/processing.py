@@ -1,4 +1,4 @@
-from tmp_base_lib.helper import make_directory
+from base_lib.helper import make_directory
 
 CSV_DIRECTORY = 'csvs'
 make_directory(CSV_DIRECTORY)
