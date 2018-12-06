@@ -86,3 +86,32 @@ def classification_data_visualization(
     plt.subplots(1, 1, figsize=(10, 10))
     make_correlation_matrix_plot(dataframe, dataset_name)
     plt.close()
+
+
+def make_fitting_curve(TMP_dict, fitting_name, dataset_name):
+    tmp_len = len(TMP_dict)
+
+    columns_count = 4
+    rows_count = tmp_len // columns_count + 1
+
+    plt.figure(1)
+    plt.subplots(nrows=rows_count, ncols=columns_count, figsize=(4*columns_count, 4*rows_count))
+
+    for metric_number, metric_name in enumerate(TMP_dict, start=1):
+        plt.subplot(rows_count, columns_count, metric_number)
+
+        x_axis = list()
+        y_axis = list()
+        for x, y in TMP_dict[metric_name].items():
+            x_axis.append(x)
+            y_axis.append(y)
+
+        plt.plot(x_axis, y_axis)
+
+        plt.locator_params(axis='y', nbins=10)
+        plt.locator_params(axis='x', nbins=10)
+        plt.title(metric_name)
+        plt.tight_layout()
+
+    plt.savefig('{}/{}_{}_optimize.png'.format(PLOTS_DIRECTORY, dataset_name, fitting_name))
+    plt.close()
