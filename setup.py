@@ -7,5 +7,5 @@ setup(
       author='Nick',
       author_email='wsaad@mail.ru',
       url='http://www.python.org/sigs/distutils-sig/',
-      packages=['processing', 'helper', 'visualization'],
+      packages=['my_base_lib'],
 )
