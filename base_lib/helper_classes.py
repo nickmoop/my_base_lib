@@ -22,10 +22,10 @@ class MyModelsEnsemble:
             my_model = MyModel(model_name, 'mean')
             self.models.append(my_model)
 
-    def get_best_hyper_parameters(self, x_train, y_train):
+    def get_best_hyper_parameters(self, x_train, y_train, scoring='accuracy'):
         for model in self.models:
             print('Finding hyperparameters {}'.format(model.name))
-            model.get_best_hyper_parameters(x_train, y_train)
+            model.get_best_hyper_parameters(x_train, y_train, scoring=scoring)
 
     def make_voting_classifier(self, voting='soft', n_jobs=2):
         print('Vote classifier, voting: {}, n_jobs: {}'.format(voting, n_jobs))
