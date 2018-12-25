@@ -34,13 +34,13 @@ class MyModelsEnsemble:
             estimators=[(model.name, model.model) for model in self.models]
         )
 
-    def score_models(self, x_train, y_train, kfold=10):
+    def score_models(self, x_train, y_train, kfold=10, scoring='accuracy'):
         cv_results = list()
         for model in self.models:
             cv_results.append(
                 cross_val_score(
                     model.model, x_train, y=y_train,
-                    scoring='accuracy', cv=kfold, n_jobs=2
+                    scoring=scoring, cv=kfold, n_jobs=2
                 )
             )
 
@@ -76,10 +76,10 @@ class MyModel:
     def fit(self, x, y):
         self.model = self.model(**self.best_hyper_parameters).fit(x, y)
 
-    def get_best_hyper_parameters(self, train_x, train_y):
+    def get_best_hyper_parameters(self, train_x, train_y, scoring='accuracy'):
         self.model = GridSearchCV(
             self.model, param_grid=self.hyperparameters_grid, cv=10,
-            scoring='accuracy', n_jobs=2
+            scoring=scoring, n_jobs=2
         )
         self.model.fit(train_x, train_y)
         self.best_hyper_parameters = self.model.best_estimator_
